@@ -14,7 +14,7 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 const HOST = "0.0.0.0";
 
-const whitelist = ['http://0.0.0.0:4000', 'https://www.folktfolk.se']
+const whitelist = ['http://0.0.0.0:4000',' http://localhost:4091/', 'https://www.folktfolk.se']
 const corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
