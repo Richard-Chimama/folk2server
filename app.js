@@ -14,20 +14,17 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 const HOST = "0.0.0.0";
 
-const whitelist = ['http://0.0.0.0:4000',' http://localhost:4091/', 'https://www.folktfolk.se']
 const corsOptions = {
-  origin: function (origin, callback) {
-    if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true)
-    } else {
-      callback(new Error('Not allowed by CORS'))
-    }
-  }
+  origin: '*'
 }
 
-app.use(express.json());
 app.use(helmet())
+app.use((req, res, next) => {
+  res.header('Cross-Origin-Resource-Policy', 'cross-origin');
+  next();
+});
 app.use(CORS(corsOptions))
+app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
