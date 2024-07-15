@@ -5,8 +5,8 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const Mailer = require("./src/Mailer");
 const generateMailOptions = require("./src/generateMailOptions");
-const helmet = require('helmet')
-const CORS = require('cors')
+const helmet = require('helmet');
+const CORS = require('cors');
 
 dotenv.config();
 
@@ -16,14 +16,10 @@ const HOST = "0.0.0.0";
 
 const corsOptions = {
   origin: '*'
-}
+};
 
-app.use(helmet())
-app.use((req, res, next) => {
-  res.header('Cross-Origin-Resource-Policy', 'cross-origin');
-  next();
-});
-app.use(CORS(corsOptions))
+app.use(helmet());
+app.use(CORS(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -42,7 +38,7 @@ app.post("/", async (req, res) => {
     },
   };
 
-  const mailOptions = generateMailOptions(email)
+  const mailOptions = generateMailOptions(email);
 
   const mailer = new Mailer(transportProps);
 
@@ -67,7 +63,6 @@ app.use(function (err, req, res, next) {
     error: req.app.get("env") === "development" ? err : {}
   });
 });
-
 
 app.listen(PORT, HOST, () => {
   console.log(`server running on http://${HOST}:${PORT}`);
