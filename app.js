@@ -41,7 +41,7 @@ app.post("/", async (req, res) => {
   };
 
   const userMail = generateMailOptions(email);
-  const senderMail = SendMail(sender)
+  const senderMail = SendMail(email)
 
   const mailer = new Mailer(transportProps);
 

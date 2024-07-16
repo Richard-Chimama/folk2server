@@ -4,7 +4,7 @@ dotenv.config();
 const SendMail = (to) => {
   return {
     from: process.env.SMTP_SENDER,
-    to: to,
+    to: process.env.SMTP_USER,
     subject: "New customer registration",
     html: `
     <!DOCTYPE html>
