@@ -7,6 +7,7 @@ const Mailer = require("./src/Mailer");
 const generateMailOptions = require("./src/generateMailOptions");
 const helmet = require('helmet');
 const CORS = require('cors');
+const SendMail = require("./src/SendMail");
 
 dotenv.config();
 
@@ -27,23 +28,26 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.post("/", async (req, res) => {
   const email = req.body.email;
+  const sender = process.env.SMTP_USER
 
   const transportProps = {
     host: process.env.SMTP_HOST,
     port: parseInt(process.env.SMTP_PORT, 10),
     secure: process.env.SMTP_SECURE === "true",
     auth: {
-      user: process.env.SMTP_USER,
+      user: sender,
       pass: process.env.SMTP_PASS,
     },
   };
 
-  const mailOptions = generateMailOptions(email);
+  const userMail = generateMailOptions(email);
+  const senderMail = SendMail(sender)
 
   const mailer = new Mailer(transportProps);
 
   try {
-    await mailer.sendMail(mailOptions);
+    await mailer.sendMail(userMail);
+    await mailer.sendMail(senderMail);
     res.status(200).send("OK");
   } catch (error) {
     res.status(500).send("Error sending email");
