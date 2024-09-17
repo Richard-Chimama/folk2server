@@ -55,7 +55,7 @@ const SendMail = (to, subject, message) => {
             <hr />
             <br />
             <i>Email: ${to}</i>
-            <i>Subject: ${subject}</i>
+            <p>Subject: ${subject}</p>
             <p>Message: ${message}</p>
             <br />
             <hr />
