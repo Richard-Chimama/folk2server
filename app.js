@@ -28,6 +28,8 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.post("/", async (req, res) => {
   const email = req.body.email;
+  const subject = req.body.subject
+  const message = req.body.message;
   const sender = process.env.SMTP_USER
 
   const transportProps = {
@@ -41,7 +43,7 @@ app.post("/", async (req, res) => {
   };
 
   const userMail = generateMailOptions(email);
-  const senderMail = SendMail(email)
+  const senderMail = SendMail(email, subject, message)
 
   const mailer = new Mailer(transportProps);
 

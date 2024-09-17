@@ -1,11 +1,11 @@
 const dotenv = require("dotenv");
 dotenv.config();
 
-const SendMail = (to) => {
+const SendMail = (to, subject, message) => {
   return {
     from: process.env.SMTP_SENDER,
     to: process.env.SMTP_USER,
-    subject: "New customer registration",
+    subject: "New customer contact",
     html: `
     <!DOCTYPE html>
 <html lang='sw'>
@@ -51,8 +51,14 @@ const SendMail = (to) => {
         </div>
         <div class="content">
             <p>Hey!,</p>
-            <p>New customer has join the community</p>
+            <p>You have a new contact message!</p>
+            <hr />
+            <br />
             <i>Email: ${to}</i>
+            <i>Subject: ${subject}</i>
+            <p>Message: ${message}</p>
+            <br />
+            <hr />
             <p>Folk till folk secondhand Store Team</p>
         </div>
         <div class="footer">

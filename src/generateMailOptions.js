@@ -47,13 +47,12 @@ const generateMailOptions = (to) => {
 <body>
     <div class="container">
         <div class="header">
-            <h1>Välkommen till vår secondhandbutik!</h1>
+            <h1>Tack för att du kontaktar oss!</h1>
         </div>
         <div class="content">
             <p>Hey!,</p>
-            <p>Tack för att du blir medlem hos oss! Vi är glada över att ha dig med i vår community. Som medlem kommer du att få uppdateringar om våra senaste ankomster, specialerbjudanden och kommande evenemang.</p>
+            <p>Vi har tagit emot ditt meddelande och kommer att svara så snart som möjligt.</p>
             <p>Vänligen utforska och följ oss på <a href="https://www.instagram.com/folktfolk/"> Instagram </a> för att upptäcka vår nuvarande kollektion av förälskade kläder och skor.</p>
-            <p>Om du har några frågor eller behöver hjälp, tveka inte att <a href="mailto:info@folktfolk.se">kontakta oss</a>.</p>
             <p>Glad shopping!</p>
             <p>Folk till folk secondhand Store Team</p>
             <a class="button" href="https://maps.app.goo.gl/BVYyk5CPuyDTGSd48">Besök vår butik</a>
